@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5ecd9">
+  <title>SimonLife Front Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="hero__frame"></div>
+      <div class="hero__ornament hero__ornament--left"></div>
+      <div class="hero__ornament hero__ornament--right"></div>
+      <p class="eyebrow">SimonLife System</p>
+      <h1>Front Page</h1>
+      <p class="hero__summary">
+        The daily command panel for SimonLife: what today is, what to do, what you ate, what you trained, what the graphs say, and when to close the capsule.
+      </p>
+      <div class="hero__meta">
+        <span id="status-pill" class="pill">Operational Prototype</span>
+        <span class="pill pill--soft">Light Minimal Art Deco</span>
+      </div>
+      <div class="hero__band hero__band--status">
+        <div>
+          <p class="hero__band-label">Week</p>
+          <p id="week-value" class="hero__band-value">Week 1</p>
+        </div>
+        <div>
+          <p class="hero__band-label">Day</p>
+          <p id="day-value" class="hero__band-value">Day 1</p>
+        </div>
+        <div>
+          <p class="hero__band-label">Date</p>
+          <p id="date-value" class="hero__band-value">Baseline day next week</p>
+        </div>
+      </div>
+      <div class="hero__band">
+        <div>
+          <p class="hero__band-label">Role</p>
+          <p id="role-value" class="hero__band-value">Baseline test day</p>
+        </div>
+        <div>
+          <p class="hero__band-label">Sunday line</p>
+          <p id="sunday-value" class="hero__band-value">Establish rung one</p>
+        </div>
+        <div>
+          <p class="hero__band-label">Capsule</p>
+          <p id="capsule-value" class="hero__band-value">Not started</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="vault-card vault-card--lead">
+      <div class="section-title">
+        <p class="kicker">Today</p>
+        <h2>What the system says right now</h2>
+      </div>
+      <div class="metric-grid">
+        <article class="metric">
+          <p class="metric__label">Primary training focus</p>
+          <p id="focus-value" class="metric__value">Measure true starting point</p>
+          <p class="metric__note">Today is built around the day role, not around improvisation.</p>
+        </article>
+        <article class="metric">
+          <p class="metric__label">Nutrition mode</p>
+          <p id="nutrition-value" class="metric__value">Log actual intake</p>
+          <p class="metric__note">Low-carb, protein-dominant logging through the day.</p>
+        </article>
+        <article class="metric">
+          <p class="metric__label">Training status</p>
+          <p id="training-status" class="metric__value">Not logged</p>
+          <p class="metric__note">Use Training to record what was actually done.</p>
+        </article>
+        <article class="metric">
+          <p class="metric__label">Food status</p>
+          <p id="food-status" class="metric__value">Not logged</p>
+          <p class="metric__note">Use Food to capture every item that enters the capsule.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="action-hub">
+      <a class="hub-card hub-card--primary hub-card--link" href="today.html">
+        <span class="hub-card__kicker">Start here</span>
+        <span class="hub-card__title">Today</span>
+        <span class="hub-card__copy">See the current day role, Sunday context, baseline battery, and what today is asking of you.</span>
+      </a>
+      <a class="hub-card hub-card--link" href="food.html">
+        <span class="hub-card__kicker">Log intake</span>
+        <span class="hub-card__title">Food</span>
+        <span class="hub-card__copy">Record what you ate through the day so nutrition totals can feed the capsule cleanly.</span>
+      </a>
+      <a class="hub-card hub-card--link" href="training.html">
+        <span class="hub-card__kicker">Log execution</span>
+        <span class="hub-card__title">Training</span>
+        <span class="hub-card__copy">Enter exercises, reps, weight, and what actually happened instead of what was planned.</span>
+      </a>
+      <a class="hub-card hub-card--link" href="graphs.html">
+        <span class="hub-card__kicker">Review trends</span>
+        <span class="hub-card__title">Graphs</span>
+        <span class="hub-card__copy">Open the four-pane graph view for Push, Pull, Core, and Cardio with calorie and bodyweight ghosts.</span>
+      </a>
+      <a class="hub-card hub-card--close hub-card--link" href="close-capsule.html">
+        <span class="hub-card__kicker">End of day</span>
+        <span class="hub-card__title">Close Capsule</span>
+        <span class="hub-card__copy">Seal the day&apos;s record once food, training, metrics, and commentary are in place.</span>
+      </a>
+    </section>
+
+    <section class="vault-card">
+      <div class="section-title">
+        <p class="kicker">Routine</p>
+        <h2>Open the day by block</h2>
+      </div>
+      <div class="action-hub action-hub--compact">
+        <a class="hub-card hub-card--link" href="morning.html">
+          <span class="hub-card__kicker">Block one</span>
+          <span class="hub-card__title">Morning</span>
+          <span class="hub-card__copy">Cardio, core, setup, and early signal work.</span>
+        </a>
+        <a class="hub-card hub-card--link" href="afternoon.html">
+          <span class="hub-card__kicker">Block two</span>
+          <span class="hub-card__title">Afternoon</span>
+          <span class="hub-card__copy">Primary strength work and the main structured push or pull.</span>
+        </a>
+        <a class="hub-card hub-card--link" href="evening.html">
+          <span class="hub-card__kicker">Block three</span>
+          <span class="hub-card__title">Evening</span>
+          <span class="hub-card__copy">Run, accessories, and whatever closes the day cleanly.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="vault-card">
+      <div class="section-title">
+        <p class="kicker">Next Sunday</p>
+        <h2>Week-one rung to earn</h2>
+      </div>
+      <div class="summary-ribbon" id="sunday-targets"></div>
+    </section>
+
+    <section class="vault-card">
+      <div class="section-title">
+        <p class="kicker">Recent Capsule Read</p>
+        <h2>Starting estimate from recent work</h2>
+      </div>
+      <div class="action-list" id="estimate-list"></div>
+    </section>
+
+    <section class="vault-card">
+      <div class="section-title">
+        <p class="kicker">Training</p>
+        <h2>Today&apos;s execution structure</h2>
+      </div>
+      <div class="planning-grid" id="execution-grid"></div>
+    </section>
+
+    <section class="vault-card">
+      <div class="section-title">
+        <p class="kicker">Graphs</p>
+        <h2>What needs to be visible</h2>
+      </div>
+      <div class="summary-ribbon" id="graph-ribbon"></div>
+    </section>
+
+    <section class="vault-card vault-card--actions">
+      <div class="section-title">
+        <p class="kicker">Capsule Law</p>
+        <h2>What the day must preserve</h2>
+      </div>
+      <div class="action-list">
+        <article class="action">
+          <h3>Explicit over implicit</h3>
+          <p>No silent carryover, no assumed menu, no missing block that is "understood." If it happened, it gets recorded.</p>
+        </article>
+        <article class="action">
+          <h3>Sunday decides the week</h3>
+          <p>The week is only real if Sunday tests it. Passing Sunday is what earns the next rung.</p>
+        </article>
+        <article class="action">
+          <h3>Ground truth over narrative</h3>
+          <p>The capsule is the historical truth layer. The dashboard should make it easier to feed that truth, not replace it.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <nav class="dock">
+    <span class="dock__item dock__item--active">Front</span>
+    <span class="dock__divider"></span>
+    <span class="dock__item">Food</span>
+    <span class="dock__divider"></span>
+    <span class="dock__item">Training</span>
+    <span class="dock__divider"></span>
+    <span class="dock__item">Graphs</span>
+  </nav>
+
+  <script src="simonlife-store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

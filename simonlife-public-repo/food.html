@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5ecd9">
+  <title>SimonLife Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="hero__frame"></div>
+      <p class="eyebrow">SimonLife</p>
+      <h1>Food</h1>
+      <p class="hero__summary">Log the high-protein, low-carb intake that feeds the daily capsule and later nutrition totals.</p>
+    </header>
+    <section class="vault-card">
+      <div class="section-title"><p class="kicker">Quick Entry</p><h2>Add food</h2></div>
+      <div class="voice-strip">
+        <button id="food-voice" class="action-button action-button--soft">Tap to talk</button>
+        <p class="voice-strip__copy">Say something like "five ounces trimmed strip loin" and I will drop it into the food field and try to catch the amount and unit.</p>
+      </div>
+      <div class="form-grid">
+        <label class="field field--full"><span>Food item</span><input id="food-item" type="text" placeholder="e.g. trimmed strip loin"></label>
+        <label class="field"><span>Amount</span><input id="food-amount" type="text" placeholder="e.g. 5"></label>
+        <label class="field"><span>Unit</span><input id="food-unit" type="text" placeholder="oz, eggs, can"></label>
+      </div>
+      <button id="add-food" class="action-button">Add Food</button>
+    </section>
+    <section class="vault-card">
+      <div class="section-title"><p class="kicker">Today's log</p><h2>Food entries</h2></div>
+      <div class="list-panel" id="food-list"></div>
+    </section>
+  </main>
+  <nav class="dock">
+    <a class="dock__item" href="index.html">Front</a><span class="dock__divider"></span>
+    <a class="dock__item" href="today.html">Today</a><span class="dock__divider"></span>
+    <span class="dock__item dock__item--active">Food</span><span class="dock__divider"></span>
+    <a class="dock__item" href="training.html">Training</a>
+  </nav>
+  <script src="simonlife-store.js"></script>
+  <script src="voice.js"></script>
+  <script>
+    SimonLifeVoice.attach("food-voice", "food-item", {
+      buttonLabel: "Tap to talk",
+      onResult(transcript) {
+        const amountMatch = transcript.match(/(\d+(?:\.\d+)?)/);
+        const unitMatch = transcript.match(/\b(oz|ounce|ounces|egg|eggs|can|cans|grams|gram|g|lb|lbs)\b/i);
+        if (amountMatch && !document.getElementById("food-amount").value) {
+          document.getElementById("food-amount").value = amountMatch[1];
+        }
+        if (unitMatch && !document.getElementById("food-unit").value) {
+          document.getElementById("food-unit").value = unitMatch[1];
+        }
+      }
+    });
+
+    function render() {
+      const state = SimonLifeStore.load();
+      const list = document.getElementById("food-list");
+      list.innerHTML = "";
+      if (!state.food.length) {
+        list.innerHTML = '<article class="action"><h3>No food logged yet</h3><p>Add each item as you eat it so the capsule closes cleanly later.</p></article>';
+        return;
+      }
+      state.food.forEach((item, idx) => {
+        const row = document.createElement("article");
+        row.className = "obligation";
+        row.innerHTML = `<div><p class="obligation__label">${item.item}</p><p class="obligation__note">Entry ${idx + 1}</p></div><p class="obligation__amount">${item.amount} ${item.unit}</p>`;
+        list.appendChild(row);
+      });
+    }
+
+    document.getElementById("add-food").addEventListener("click", () => {
+      const item = document.getElementById("food-item").value.trim();
+      const amount = document.getElementById("food-amount").value.trim();
+      const unit = document.getElementById("food-unit").value.trim();
+      if (!item || !amount || !unit) return;
+      SimonLifeStore.update((s) => {
+        s.food.push({ item, amount, unit });
+      });
+      document.getElementById("food-item").value = "";
+      document.getElementById("food-amount").value = "";
+      document.getElementById("food-unit").value = "";
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

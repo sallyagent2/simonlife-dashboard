@@ -1,0 +1,9 @@
+{
+  "name": "SimonLife",
+  "short_name": "SimonLife",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f0e2",
+  "theme_color": "#f5ecd9",
+  "description": "SimonLife mobile dashboard for daily routines, food, training, graphs, and capsule closure."
+}
